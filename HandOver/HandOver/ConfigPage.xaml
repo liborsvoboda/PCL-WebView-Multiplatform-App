@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:addOn="clr-namespace:HandOver"
+             xmlns:local="clr-namespace:HandOver.Singleton"
+             xmlns:images="clr-namespace:HandOver.Images"             
+             x:Class="HandOver.ConfigPage">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <ScrollView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout x:Name="config" Grid.Row="0" Spacing="20" Padding="15,15,15,65">
+                        <StackLayout x:Name="Error" Grid.Row="0" Spacing="20" Padding="15,15,15,15" IsVisible="false">
+                            <Label x:Name="ErrorMessage" Text="Config Path" FontSize="Medium" TextColor="Red" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                        <Label Text="Config Path" FontSize="Medium" />
+                        <Entry x:Name="start_path" MaxLength="255" Text="{Binding Item.start_path}" Keyboard="Plain" FontSize="Small" Placeholder="{x:Static local:DefaultValues.start_path}" PlaceholderColor="{StaticResource PlaceHolderColor}" />
+
+                        <Label Text="Close Password" FontSize="Medium" />
+                        <Entry x:Name="offline_pass" IsPassword="True" MaxLength="255" Text="{Binding Item.offline_pass}" Keyboard="Plain" FontSize="Small" Placeholder="{x:Static local:DefaultValues.offline_pass}" PlaceholderColor="{StaticResource PlaceHolderColor}" />
+
+                        <Label Text="Refresh Interval" FontSize="Medium" />
+                        <Entry x:Name="refreshInterval" MaxLength="2" Text="{Binding Item.refreshInterval}" Keyboard="Numeric" FontSize="Small" Margin="0" Placeholder="{x:Static local:DefaultValues.refreshIntervalDefault}" PlaceholderColor="{StaticResource PlaceHolderColor}" >
+                            <Entry.Behaviors>
+                                <addOn:NumericValidationBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                        <Label Text="Serial Number" FontSize="Medium" />
+                        <Entry x:Name="sn" MaxLength="255" IsReadOnly="False" Text="{Binding Item.sn}" Keyboard="Plain" FontSize="Small" Placeholder="{x:Static local:DefaultValues.sn}" PlaceholderColor="{StaticResource PlaceHolderColor}" />
+
+                        <Label Text="Application Path" FontSize="Medium" />
+                        <Entry x:Name="path" MaxLength="255" IsReadOnly="True" Text="{Binding Item.path}" Keyboard="Plain" FontSize="Small" Placeholder="{x:Static local:DefaultValues.path}" PlaceholderColor="{StaticResource PlaceHolderColor}" />
+
+                    </StackLayout>
+                </Grid>
+            </ScrollView.Content>
+        </ScrollView>
+        <Grid HeightRequest="48" Grid.Row="1" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource GreenBackground}" Clicked="Connect_Clicked" Source="{x:Static images:Images.connectImage}" VerticalOptions="CenterAndExpand" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Fill"/>
+            <ImageButton Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" WidthRequest="48" Clicked="Save_Clicked" Source="{x:Static images:Images.saveImage}" VerticalOptions="StartAndExpand" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Fill"/>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

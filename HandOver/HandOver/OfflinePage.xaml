@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:addOn="clr-namespace:HandOver"
+             xmlns:local="clr-namespace:HandOver.Singleton"
+             xmlns:images="clr-namespace:HandOver.Images"     
+             x:Class="HandOver.OfflinePage">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" BackgroundColor="#cddec5">
+            <ScrollView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout x:Name="config" Grid.Row="0" Spacing="20" Padding="15,15,15,15">
+                        <StackLayout x:Name="Error" Grid.Row="0" Spacing="20" Padding="15,15,15,15">
+                            <Label x:Name="ErrorMessage" Text="{Binding Item.reason}" FontSize="Medium" TextColor="Red" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+
+                    </StackLayout>
+                    <StackLayout x:Name="exit_part" Grid.Row="1" HeightRequest="60" Spacing="20" Padding="15,15,15,15" IsVisible="{Binding Item.notLoading}">
+                        <Label Text="Exit Code" FontSize="Medium" HorizontalTextAlignment="Center" />
+                        <Entry x:Name="exit_code" MaxLength="255" TextChanged="close_application" Keyboard="Plain" FontSize="Small" />
+                    </StackLayout>
+                    <StackLayout x:Name="loading" Grid.Row="1" HeightRequest="60" Spacing="20" Padding="15,15,15,15" IsVisible="{Binding Item.loading}">
+                        <Label Text="Loading" FontSize="Medium" HorizontalTextAlignment="Center" PropertyChanged="Label_PropertyChanged" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Spacing="20">
+                    </StackLayout>
+                </Grid>
+            </ScrollView.Content>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,12 @@
+﻿################################################################################
+# Tento soubor .gitignore byl automaticky vytvořen aplikací Microsoft(R) Visual Studio.
+################################################################################
+
+/HandOver/.vs/HandOver/v16/.suo
+build/
+Debug/
+Release/
+bin/
+obj/
+AppPackages/
+BundleArtifacts/
